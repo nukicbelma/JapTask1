@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Database;
 using API.Interfaces;
 using API.Repositories;
+using FashionNova.WebAPI.Filter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,12 +36,22 @@ namespace API
            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection" /*"cs1"*/)));
 
 
-            services.AddScoped<IRecipeRepository, RecipeRepository>();
-            services.AddControllers();
+            services.AddControllers(x => {
+                x.Filters.Add<ExceptionFilterAttribute>();
+            });
+            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
+
+            //servisi
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            //services.AddScoped<IRecipeDetailRepository, RecipeDetailRepository>();
+            //services.AddScoped<IIngredientRepository, IngredientRepository>();
+            // services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +68,10 @@ namespace API
 
             app.UseRouting();
 
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200")); 
+
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

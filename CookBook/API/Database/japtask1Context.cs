@@ -1,4 +1,5 @@
 ﻿using System;
+using API.Seeder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -38,9 +39,6 @@ namespace API.Database
 
             modelBuilder.Entity<AppUser>(entity =>
             {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK__AppUser__1788CC4C89F27EFD");
-
                 entity.ToTable("AppUser");
 
                 entity.Property(e => e.FirstName)
@@ -51,13 +49,13 @@ namespace API.Database
                     .IsRequired()
                     .HasMaxLength(20);
 
-                entity.Property(e => e.PasswordHash)
-                    .IsRequired()
-                    .HasMaxLength(1);
+                entity.Property(e => e.PasswordHash).IsRequired();
 
-                entity.Property(e => e.PasswordSalt)
+                entity.Property(e => e.PasswordSalt).IsRequired();
+
+                entity.Property(e => e.Username)
                     .IsRequired()
-                    .HasMaxLength(1);
+                    .HasMaxLength(20);
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -122,6 +120,7 @@ namespace API.Database
             });
 
             OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Seed();
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

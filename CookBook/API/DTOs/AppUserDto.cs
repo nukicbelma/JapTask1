@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace API.Database
+namespace API.DTOs
 {
-    public partial class AppUser
+    public class AppUserDto
     {
         public int AppUserId { get; set; }
         public string FirstName { get; set; }
