@@ -59,8 +59,8 @@ namespace API.Migrations
                             AppUserId = 1,
                             FirstName = "Belma",
                             LastName = "Nukic",
-                            PasswordHash = "hUbtvs3Ht81qIsXCCTtWOMZIy+M=",
-                            PasswordSalt = "AttaYbzFcm+DYsZM1Fkqfg==",
+                            PasswordHash = "aEDpc3lY+9Jusc/gvsB7Rc3JrBA=",
+                            PasswordSalt = "xUMBanhCnM8gFy+8nqRQ3g==",
                             Username = "belma"
                         },
                         new
@@ -68,8 +68,8 @@ namespace API.Migrations
                             AppUserId = 2,
                             FirstName = "Ema",
                             LastName = "Bojcic",
-                            PasswordHash = "U4n07RpuUvp1Wxnr9j8SwmVIg7g=",
-                            PasswordSalt = "AttaYbzFcm+DYsZM1Fkqfg==",
+                            PasswordHash = "DQG9LFazEDs70+2vsTZarkNNeVk=",
+                            PasswordSalt = "xUMBanhCnM8gFy+8nqRQ3g==",
                             Username = "ema"
                         });
                 });
@@ -89,6 +89,58 @@ namespace API.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Pancakes"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Waffles"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Pizzas"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Burgers"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Gluten-free"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CategoryName = "Pasta"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CategoryName = "Seafood"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            CategoryName = "Salads"
+                        },
+                        new
+                        {
+                            CategoryId = 9,
+                            CategoryName = "Soups"
+                        },
+                        new
+                        {
+                            CategoryId = 10,
+                            CategoryName = "Breakfast"
+                        });
                 });
 
             modelBuilder.Entity("API.Database.Ingredient", b =>
@@ -125,6 +177,9 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -139,6 +194,8 @@ namespace API.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("RecipeId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Recipe");
                 });
@@ -176,6 +233,17 @@ namespace API.Migrations
                     b.ToTable("RecipeDetail");
                 });
 
+            modelBuilder.Entity("API.Database.Recipe", b =>
+                {
+                    b.HasOne("API.Database.Category", "Category")
+                        .WithMany("Recipes")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("API.Database.RecipeDetail", b =>
                 {
                     b.HasOne("API.Database.Ingredient", "Ingredient")
@@ -193,6 +261,11 @@ namespace API.Migrations
                     b.Navigation("Ingredient");
 
                     b.Navigation("Recipe");
+                });
+
+            modelBuilder.Entity("API.Database.Category", b =>
+                {
+                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("API.Database.Ingredient", b =>

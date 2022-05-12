@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(japtask1Context))]
-    [Migration("20220510083838_m1")]
+    [Migration("20220510141616_m1")]
     partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,26 @@ namespace API.Migrations
                     b.HasKey("AppUserId");
 
                     b.ToTable("AppUser");
+
+                    b.HasData(
+                        new
+                        {
+                            AppUserId = 1,
+                            FirstName = "Belma",
+                            LastName = "Nukic",
+                            PasswordHash = "643Xot51rXTlmnjWOvoaOuYMZZo=",
+                            PasswordSalt = "2HyTUtcpq3qFpsjtDuVzLA==",
+                            Username = "belma"
+                        },
+                        new
+                        {
+                            AppUserId = 2,
+                            FirstName = "Ema",
+                            LastName = "Bojcic",
+                            PasswordHash = "oo2r3buBVQdB1QybsybtkN7HXtU=",
+                            PasswordSalt = "2HyTUtcpq3qFpsjtDuVzLA==",
+                            Username = "ema"
+                        });
                 });
 
             modelBuilder.Entity("API.Database.Category", b =>
@@ -71,6 +91,58 @@ namespace API.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Pancakes"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Waffles"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Pizzas"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Burgers"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Gluten-free"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CategoryName = "Pasta"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CategoryName = "Seafood"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            CategoryName = "Salads"
+                        },
+                        new
+                        {
+                            CategoryId = 9,
+                            CategoryName = "Soups"
+                        },
+                        new
+                        {
+                            CategoryId = 10,
+                            CategoryName = "Breakfast"
+                        });
                 });
 
             modelBuilder.Entity("API.Database.Ingredient", b =>

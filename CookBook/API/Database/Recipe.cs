@@ -16,7 +16,8 @@ namespace API.Database
         public string RecipeName { get; set; }
         public string Description { get; set; }
         public decimal TotalPrice { get; set; }
-
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
         public virtual ICollection<RecipeDetail> RecipeDetails { get; set; }
     }
 }

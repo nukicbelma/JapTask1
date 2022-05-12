@@ -50,7 +50,7 @@ namespace API
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             //services.AddScoped<IRecipeDetailRepository, RecipeDetailRepository>();
             //services.AddScoped<IIngredientRepository, IngredientRepository>();
-            // services.AddScoped<ICategoryRepository, CategoryRepository>();
+             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAppUserRepository, AppUserRepository>();
         }
 

@@ -9,5 +9,6 @@ namespace API.Database
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public virtual ICollection<Recipe> Recipes { get; set; }
     }
 }

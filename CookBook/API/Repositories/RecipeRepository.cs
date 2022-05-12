@@ -25,5 +25,12 @@ namespace API.Repositories
             var list = query.ToList();
             return _mapper.Map<List<RecipeDto>>(list);
         }
+
+        public List<RecipeDto> GetRecipesByCategory(int id)
+        {
+            var query = _context.Recipes.AsQueryable();
+            var list = query.ToList();
+            return _mapper.Map<List<RecipeDto>>(list);
+        }
     }
 }

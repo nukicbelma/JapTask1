@@ -20,12 +20,12 @@ namespace API.Seeder
                 Salt.Add(StringGenerators.GenerateSalt());
             }
 
-    #region Dodavanje korisnika 
-    //AppUsers
-    modelBuilder.Entity<AppUser>().HasData(
+                #region Dodavanje korisnika 
+                //AppUsers
+                modelBuilder.Entity<AppUser>().HasData(
                 new AppUser()
-    {
-        AppUserId = 1,
+                {
+                    AppUserId = 1,
                     FirstName = "Belma",
                     LastName = "Nukic",
                     Username = "belma",
@@ -33,14 +33,74 @@ namespace API.Seeder
                     PasswordHash = StringGenerators.GenerateHash(Salt[0], "belma"),
                 },
                 new AppUser()
-    {
-        AppUserId = 2,
+                {
+                    AppUserId = 2,
                     FirstName = "Ema",
                     LastName = "Bojcic",
                     Username = "ema",
                     PasswordSalt = Salt[0],
                     PasswordHash = StringGenerators.GenerateHash(Salt[0], "ema"),
                 });
+            #endregion
+
+            #region Dodavanje categorija
+            modelBuilder.Entity<Category>().HasData(
+                new Category()
+                {
+                    CategoryId = 1,
+                    CategoryName = "Pancakes"
+                },
+                new Category()
+                {
+                      CategoryId = 2,
+                      CategoryName = "Waffles"
+                },
+                new Category()
+                {
+                     CategoryId = 3,
+                     CategoryName = "Pizzas"
+                },
+                new Category()
+                {
+                      CategoryId = 4,
+                      CategoryName = "Burgers"
+                },
+                new Category()
+                {
+                       CategoryId = 5,
+                       CategoryName = "Gluten-free"
+                },
+                new Category()
+                {
+                    CategoryId = 6,
+                    CategoryName = "Pasta"
+                },
+                new Category()
+                {
+                    CategoryId = 7,
+                    CategoryName = "Seafood"
+                },
+                new Category()
+                {
+                     CategoryId = 8,
+                     CategoryName = "Salads"
+                },
+                new Category()
+                {
+                    CategoryId = 9,
+                    CategoryName = "Soups"
+                },
+                new Category()
+                {
+                     CategoryId = 10,
+                     CategoryName = "Breakfast"
+                }
+                //new Category()
+                //{
+                //             CategoryId = 11,
+                //             CategoryName = "Bosnian traditional food"
+                //}
+                );
             #endregion
         }
     }

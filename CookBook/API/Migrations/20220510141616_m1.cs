@@ -96,6 +96,32 @@ namespace API.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AppUser",
+                columns: new[] { "AppUserId", "FirstName", "LastName", "PasswordHash", "PasswordSalt", "Username" },
+                values: new object[,]
+                {
+                    { 1, "Belma", "Nukic", "643Xot51rXTlmnjWOvoaOuYMZZo=", "2HyTUtcpq3qFpsjtDuVzLA==", "belma" },
+                    { 2, "Ema", "Bojcic", "oo2r3buBVQdB1QybsybtkN7HXtU=", "2HyTUtcpq3qFpsjtDuVzLA==", "ema" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Pancakes" },
+                    { 2, "Waffles" },
+                    { 3, "Pizzas" },
+                    { 4, "Burgers" },
+                    { 5, "Gluten-free" },
+                    { 6, "Pasta" },
+                    { 7, "Seafood" },
+                    { 8, "Salads" },
+                    { 9, "Soups" },
+                    { 10, "Breakfast" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_RecipeDetail_IngredientId",
                 table: "RecipeDetail",
