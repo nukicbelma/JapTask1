@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace API
 {
@@ -35,6 +36,10 @@ namespace API
            services.AddDbContext<japtask1Context>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection" /*"cs1"*/)));
 
+            services.AddMvc().AddNewtonsoftJson(o =>
+            {
+                o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
             services.AddControllers(x => {
                 x.Filters.Add<ExceptionFilterAttribute>();

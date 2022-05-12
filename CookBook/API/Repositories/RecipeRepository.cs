@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +12,30 @@ namespace API.Repositories
 {
     public class RecipeRepository : IRecipeRepository
     {
-        private readonly japtask1Context _context;
+        private readonly japtask1Context _repo;
         private readonly IMapper _mapper;
 
-        public RecipeRepository(japtask1Context context, IMapper mapper)
+        public RecipeRepository(japtask1Context repo, IMapper mapper)
         {
-            _context = context;
+            _repo = repo;
             _mapper = mapper;
         }
         public List<RecipeDto> GetAll()
         {
-            var query = _context.Recipes.AsQueryable();
+            var query = _repo.Recipes.AsQueryable();
             var list = query.ToList();
             return _mapper.Map<List<RecipeDto>>(list);
         }
 
-        public List<RecipeDto> GetRecipesByCategory(int id)
+        public async Task<IEnumerable<RecipeDto>> GetRecipesByCategory(int categoryId)
         {
-            var query = _context.Recipes.AsQueryable();
-            var list = query.ToList();
-            return _mapper.Map<List<RecipeDto>>(list);
+            var listaRecepata = await _repo.Recipes.Include(x => x.Category).Where(u => u.CategoryId == categoryId).ToListAsync();
+            return _mapper.Map<List<RecipeDto>>(listaRecepata);
+        }
+        public async Task<RecipeDto> GetRecipesById(int recipeId)
+        {
+            var listaRecepata = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).FirstOrDefaultAsync();
+            return _mapper.Map<RecipeDto>(listaRecepata);
         }
     }
 }

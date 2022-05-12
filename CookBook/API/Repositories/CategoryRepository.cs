@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,11 @@ namespace API.Repositories
             var list = query.ToList();
             return _mapper.Map<List<CategoryDto>>(list);
         }
+        public async Task<ActionResult<CategoryDto>> GetCategoryById(int categoryId)
+        {
+            var category= await _context.Categories.FindAsync(categoryId);
+            return _mapper.Map<CategoryDto>(category);
+        }
 
-        
     }
 }

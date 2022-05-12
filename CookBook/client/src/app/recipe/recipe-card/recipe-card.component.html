@@ -1,1 +1,18 @@
-<p>recipe-card works!</p>
+<div class="row">
+        <ul class="list-inline member-icons animate text-center" style="border-radius:3cm; border:1px solid gray; background-color: yellow;">
+            <li class="list-inline-item">
+                <p>{{recipe.recipeName}} </p>
+                <button 
+                    routerLink='/recipes/{{recipe.recipeId}}'
+                    class="btn btn-primary">
+                <i class="fa fa-envelope"></i>
+            </button>
+        </li>
+        </ul>
+    </div>
+
+<div class="card mb-4">
+    <div class="card-img-wrapper">
+        <!--<img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top">-->
+    </div>
+</div>

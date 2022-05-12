@@ -1,1 +1,36 @@
-<p>recipe-detail works!</p>
+<div  class="row">
+    <div class="col-4">
+        <div class="card">
+            <!--<img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" 
+                class="card-img-top img-thumbnail"> -->
+            <div *ngIf="recipes" class="card-body">
+                
+                <div>
+                    <strong>Recipe name:</strong>
+                    <p>{{recipes.recipeName}}</p>
+                </div>
+                <div>
+                    <strong>RecipeId:</strong>
+                    <p>{{recipes.recipeId}}</p>
+                </div>
+                <div>
+                    <strong>Category:</strong>
+                    <p>{{recipes.categoryId}}</p>
+                </div>
+                <div>
+                    <strong>Description:</strong>
+                    <p>{{recipes.description}}</p>
+                </div>
+                <div>
+                    <strong>Total cost:</strong>
+                    <p>{{recipes.totalPrice}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

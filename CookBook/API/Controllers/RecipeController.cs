@@ -9,21 +9,34 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    //[Authorize]
     public class RecipeController : ControllerBase
     {
-        private readonly IRecipeRepository _service;
-        public RecipeController(IRecipeRepository service)
+        private readonly IRecipeRepository _repo;
+        public RecipeController(IRecipeRepository repo)
         {
-            _service = service;
+            _repo = repo;
+        }
+
+        [HttpGet("getRecipesByCategory/{id}")]
+        public async Task<IActionResult> GetRecipesByCategory(int id)
+        {
+            var recipes = await _repo.GetRecipesByCategory(id);
+            return Ok(recipes);
+        }
+
+        [HttpGet("getRecipesById/{id}")]
+        public async Task<IActionResult> GetRecipesById(int id)
+        {
+            var recipes = await _repo.GetRecipesById(id);
+            return Ok(recipes);
         }
 
         [HttpGet]
         public List<RecipeDto> GetAll()
         {
-            return _service.GetAll();
+            return _repo.GetAll();
         }
     }
 }

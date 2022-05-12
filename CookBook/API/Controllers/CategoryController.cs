@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    //[Route("[api/controller]")]
-    //[Authorize]
+
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository _repo;
@@ -22,19 +22,16 @@ namespace API.Controllers
             _repo = repo;
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        //[Route("Authenticiraj/{username},{password}")]
-        //public AppUserDto Authenticiraj(string username, string password)
-        //{
-        //    return _repo.Authenticiraj(username, password);
-        //}
-
         [HttpGet]
-        [Route("api/category")]
         public List<CategoryDto> Get()
         {
             return _repo.Get();
+        }
+
+        [HttpGet("getCategoryById/{id}")]
+        public async Task<ActionResult<CategoryDto>> GetCategoryById(int id)
+        {
+            return await _repo.GetCategoryById(id);
         }
     }
 }

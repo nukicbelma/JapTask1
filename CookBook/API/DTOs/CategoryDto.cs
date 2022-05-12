@@ -9,5 +9,6 @@ namespace API.DTOs
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public virtual ICollection<RecipeDto> Recipes { get; set; }
     }
 }

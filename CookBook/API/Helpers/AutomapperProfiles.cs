@@ -19,11 +19,11 @@ namespace API.Helpers
             //        src.Photos.FirstOrDefault(x => x.IsMain).Url))
             //    .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
 
-            CreateMap<Recipe, RecipeDto>();
-            CreateMap<Ingredient, IngredientDto>();
-            CreateMap<RecipeDetail, RecipeDetailDto>();
-            CreateMap<Category, CategoryDto>();
-            CreateMap<AppUser, AppUserDto>();
+            CreateMap<Recipe, RecipeDto>().ReverseMap();
+            CreateMap<Ingredient, IngredientDto>().ReverseMap();
+            CreateMap<RecipeDetail, RecipeDetailDto>().ReverseMap();
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<AppUser, AppUserDto>().ReverseMap();
         }
     }
 }

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 
 import { HomeComponent } from './home/home.component';
+import { RecipeCardComponent } from './recipe/recipe-card/recipe-card.component';
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 //import { ListsComponent } from './lists/lists.component';
 
@@ -14,7 +16,8 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'recipe/:categoryName', component: RecipeListComponent},
+  {path:'recipe/:categoryId', component: RecipeListComponent},
+  {path:'recipes/:recipeId', component: RecipeDetailComponent},
   {path:'category', component: CategoryListComponent},
   //{path:'messages', component: MessagesComponent}, 
   {path:'**', component: HomeComponent, pathMatch:'full'}
