@@ -1,0 +1,27 @@
+<p>Add your recipe bellow and become a part of our community :)</p>
+<div  class="row" >
+    <div class="col">
+        <div class="card" style="padding: 20px;">
+           <form [formGroup]="recipeAddForm" (ngSubmit)="recipeAddForm.valid && testSubmit()" autocomplete="off">
+                <app-text-input  [formControl]='recipeAddForm.controls["recipeName"]' [label]='"Recipe name"'></app-text-input>
+                <div>
+                    <strong>Category:</strong><br>
+                    <select
+                    [class.is-invalid]='recipeAddForm.get("categoryId").errors && recipeAddForm.get("categoryId").touched'
+                    name="Category"
+                    (change)="ChangeCategory($event)"
+                    formControlName="categoryId">
+                        <option [value]="cat.categoryId" *ngFor="let cat of categories"> {{cat.categoryName}}</option>
+                    </select>
+                    <br>
+                </div>
+             <app-text-input  [formControl]='recipeAddForm.controls["description"]' [label]='"Description"'></app-text-input>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button [disabled]="!recipeAddForm.valid" class="btn btn-primary" type="submit">Add recipe</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,20 @@ namespace API.Repositories
         {
             var listaRecepata = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).FirstOrDefaultAsync();
             return _mapper.Map<RecipeDto>(listaRecepata);
+        }
+        public async Task<ActionResult<Recipe>> AddRecipe(RecipeDto request)
+        {
+            var newRecipe = new Recipe
+            {
+                RecipeName=request.RecipeName, 
+                CategoryId=request.CategoryId,
+                Description=request.Description,
+            };
+
+            _repo.Recipes.Add(newRecipe);
+            await _repo.SaveChangesAsync();
+
+            return _mapper.Map<Recipe>(newRecipe);
         }
     }
 }

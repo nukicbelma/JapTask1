@@ -1,0 +1,36 @@
+<p>Add ingredients to your recipe!</p>
+<div  class="row" >
+    <div class="col">
+        <div class="card" style="padding: 20px;">
+           <!-- <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()"> -->
+                <div>
+                    <strong>Choose ingredient:</strong>
+                    <select>
+                        <option *ngFor="let i of ingredients">
+                            {{i.name}}
+                        </option>
+                    </select>
+                    <br><br>
+                </div>
+                <div class="divpart">
+                    <strong>Amount:</strong>
+                    <input>
+                </div>
+                <div class="divpart">
+                    <strong>Unit measure:</strong>
+                    <select>
+                        <option *ngFor="let u of units">
+                            {{u.toString()}}
+                        </option>
+                    </select>
+                </div>
+                <br><br>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Add ingredient!</button>
+                </div>
+            </div>
+        <!--</form>-->
+        </div>
+    </div>
+</div>

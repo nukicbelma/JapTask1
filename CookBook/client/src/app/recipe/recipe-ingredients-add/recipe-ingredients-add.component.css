@@ -1,0 +1,10 @@
+select {
+    float: inline-end;
+    width: 100%;
+}
+.divpart {
+     display: inline;
+}
+input {
+    width: 100%;
+}

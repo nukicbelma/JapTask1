@@ -1,4 +1,5 @@
-﻿using API.DTOs;
+﻿using API.Database;
+using API.DTOs;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,13 @@ namespace API.Controllers
         public List<RecipeDto> GetAll()
         {
             return _repo.GetAll();
+        }
+
+        [HttpPost("add")]
+        public async Task<ActionResult<Recipe>> AddRecipe(RecipeDto request)
+        {
+            var recipe = await _repo.AddRecipe(request);
+            return Ok(recipe);
         }
     }
 }

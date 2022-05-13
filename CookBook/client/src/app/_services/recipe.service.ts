@@ -17,4 +17,9 @@ export class RecipeService {
   getRecipesById(recipeId) {
     return this.http.get<Recipe[]>(this.baseUrl + 'recipe/getRecipesById/' + recipeId);
   }
+  addRecipe(recipe:Recipe)
+  {
+    return this.http.post(this.baseUrl+'recipe/add', recipe);
+  }
+
 }

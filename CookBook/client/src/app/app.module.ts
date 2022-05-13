@@ -9,10 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryCardComponent } from './category/category-card/category-card.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { RecipeCardComponent } from './recipe/recipe-card/recipe-card.component';
+import { CommonModule } from '@angular/common';
+import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
+import { RecipeIngredientsAddComponent } from './recipe/recipe-ingredients-add/recipe-ingredients-add.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,13 +29,18 @@ import { RecipeCardComponent } from './recipe/recipe-card/recipe-card.component'
     HomeComponent,
     RecipeDetailComponent,
     RecipeListComponent,
-    RecipeCardComponent, 
+    RecipeCardComponent,
+    RecipeAddComponent,
+    RecipeIngredientsAddComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule, 
-    FormsModule
+    FormsModule, 
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

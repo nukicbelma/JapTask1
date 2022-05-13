@@ -102,6 +102,19 @@ namespace API.Seeder
                 //}
                 );
             #endregion
+
+            #region Dodavanje sastojaka
+            modelBuilder.Entity<Ingredient>().HasData(
+               new Ingredient()
+               {
+                   IngredientId = 1,
+                   Name = "Flour",
+                   Price = 30,
+                   Quantity = 20,
+                   //UnitMeasure= 'kg'
+               }
+               );
+            #endregion
         }
     }
 }

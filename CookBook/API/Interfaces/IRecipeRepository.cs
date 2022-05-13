@@ -14,6 +14,6 @@ namespace API.Interfaces
         List<RecipeDto> GetAll();
         Task<RecipeDto> GetRecipesById(int recipeId);
 
-        // Task<ActionResult<RecipeDto>> AddRecipe(Recipe request);
+        Task<ActionResult<Recipe>> AddRecipe(RecipeDto request);
     }
 }
