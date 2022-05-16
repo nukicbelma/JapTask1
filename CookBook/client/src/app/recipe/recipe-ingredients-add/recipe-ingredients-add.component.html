@@ -1,36 +1,46 @@
-<p>Add ingredients to your recipe!</p>
-<div  class="row" >
-    <div class="col">
-        <div class="card" style="padding: 20px;">
-           <!-- <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()"> -->
-                <div>
-                    <strong>Choose ingredient:</strong>
-                    <select>
-                        <option *ngFor="let i of ingredients">
-                            {{i.name}}
-                        </option>
-                    </select>
+<h1 style="text-align: center;">Edit your recipe</h1>
+    <div  class="row" >
+        <div class="col">
+            <div class="card" style="padding: 20px;">
+                <form [formGroup]="ingredientAddForm" (ngSubmit)="ingredientAddForm.valid && testSubmit()" autocomplete="off">
+                    <div>
+                        <strong>Ingredient:</strong><br>
+                        <select
+                        [class.is-invalid]='ingredientAddForm.get("ingredientId").errors && ingredientAddForm.get("ingredientId").touched'
+                        name="Ingredient"
+                        (change)="ChangeIgredient($event)"
+                        formControlName="ingredientId"
+                        >
+                            <option [value]="i.ingredientId" *ngFor="let i of ingredients"> {{i.name}}</option>
+                        </select>
+                        <br><br>
+                    </div>
+                    <div class="amountt">
+                        <strong>Amount:</strong><br>
+                        <app-text-input  [formControl]='ingredientAddForm.controls["amount"]' [label]='"Amount"'></app-text-input>
+                    </div>
+                    <div>
+                        <strong>Unit measure:</strong><br>
+                        <select
+                        [class.is-invalid]='ingredientAddForm.get("unitMeasure").errors && ingredientAddForm.get("unitMeasure").touched'
+                        name="unitMeasure"
+                        (change)="ChangeUnits($event)"
+                        formControlName="unitMeasure"
+                        >
+                           <!--  <option *ngFor="let i of ingredients">
+                                {{i.ingredientName}}
+                            </option> -->
+                            <option [value]="unit" *ngFor="let unit of units">  {{unit.toString()}}</option>
+                        </select>
+                        <br><br>
+                    </div>
                     <br><br>
-                </div>
-                <div class="divpart">
-                    <strong>Amount:</strong>
-                    <input>
-                </div>
-                <div class="divpart">
-                    <strong>Unit measure:</strong>
-                    <select>
-                        <option *ngFor="let u of units">
-                            {{u.toString()}}
-                        </option>
-                    </select>
-                </div>
-                <br><br>
-            <div class="card-footer">
-                <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Add ingredient!</button>
-                </div>
+                    <div class="card-footer">
+                        <div class="btn-group d-flex">
+                            <button [disabled]="!ingredientAddForm.valid" class="btn btn-primary" type="submit">Add ingredient to your recipe!</button>
+                        </div>
+                    </div>
+            </form>
             </div>
-        <!--</form>-->
         </div>
     </div>
-</div>

@@ -1,8 +1,11 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,12 @@ namespace API.Repositories
         {
             var category= await _context.Categories.FindAsync(categoryId);
             return _mapper.Map<CategoryDto>(category);
+        }
+        public async Task<PagedList<CategoryDto>> GetCategoriesPaging(PaginationParams p)
+        {
+            var query = _context.Categories.ProjectTo<CategoryDto>(_mapper.ConfigurationProvider)
+                .AsQueryable().AsNoTracking();
+            return await PagedList<CategoryDto>.CreateAsync(query, p.PageNumber, p.PageSize);
         }
 
     }

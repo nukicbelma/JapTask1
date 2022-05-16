@@ -49,7 +49,6 @@ namespace API.Repositories
 
             _repo.Recipes.Add(newRecipe);
             await _repo.SaveChangesAsync();
-
             return _mapper.Map<Recipe>(newRecipe);
         }
     }

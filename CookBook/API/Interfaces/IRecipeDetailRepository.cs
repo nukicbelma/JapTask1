@@ -1,4 +1,6 @@
-﻿using API.DTOs;
+﻿using API.Database;
+using API.DTOs;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,10 @@ namespace API.Interfaces
 {
     public interface IRecipeDetailRepository
     {
+        Task<IEnumerable<RecipeDetailDto>> GetIngredientsByRecipe(int recipeId);
         Task<IEnumerable<RecipeDetailDto>> GetRecipeDetailById(int categoryId);
         List<RecipeDetailDto> GetAll();
+        Task<ActionResult<RecipeDetailDto>> AddIngredientToRecipe(int id,RecipeDetailInsertDto request);
+
     }
 }

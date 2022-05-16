@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'recipes/:recipeId', component: RecipeDetailComponent},
   {path:'category', component: CategoryListComponent},
   {path:'addrecipe', component: RecipeAddComponent},
-  {path:'addingredient', component: RecipeIngredientsAddComponent},
+  {path:'addingredient/:recipeId', component: RecipeIngredientsAddComponent},
   //{path:'messages', component: MessagesComponent}, 
   {path:'**', component: HomeComponent, pathMatch:'full'}
 ];

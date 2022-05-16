@@ -5,17 +5,13 @@
                 class="card-img-top img-thumbnail"> -->
             <div *ngIf="recipes" class="card-body">
                 
-                <div>
+                <div class="title">
                     <strong>Recipe name:</strong>
                     <p>{{recipes.recipeName}}</p>
                 </div>
                 <div>
-                    <strong>RecipeId:</strong>
-                    <p>{{recipes.recipeId}}</p>
-                </div>
-                <div>
                     <strong>Category:</strong>
-                    <p>{{recipes.categoryId}}</p>
+                    <p>{{recipes.category.categoryName}}</p>
                 </div>
                 <div>
                     <strong>Description:</strong>
@@ -23,12 +19,29 @@
                 </div>
                 <div>
                     <strong>Total cost:</strong>
-                    <p>{{recipes.totalPrice}}</p>
+                    <p>{{recipes.totalPrice}} BAM</p>
+                </div>
+                <div class="table">
+                    <strong>Ingredients</strong>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                    </tr>
+                        <tr  *ngFor="let i of ingredients"> 
+                        <td>{{i.ingredient.name}}</td>
+                        <td>{{i.amount}}</td>
+                        <td>{{i.unitMeasure}}</td>
+                        <td> ___ BAM </td>
+                    </tr>
+                </table>
                 </div>
             </div>
-            <div class="card-footer">
+            <div *ngIf="recipes" class="card-body">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Edit recipe</button>
+                    <button class="btn btn-primary" routerLink='/addingredient/{{recipes.recipeId}}'>Edit recipe</button>
                 </div>
             </div>
         </div>

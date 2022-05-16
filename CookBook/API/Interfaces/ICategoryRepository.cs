@@ -1,4 +1,5 @@
 ﻿using API.DTOs;
+using API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace API.Interfaces
     {
         List<CategoryDto> Get();
         Task<ActionResult<CategoryDto>> GetCategoryById(int categoryId);
+        Task<PagedList<CategoryDto>> GetCategoriesPaging(PaginationParams p);
     }
 }

@@ -14,6 +14,7 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { RecipeCardComponent } from './recipe/recipe-card/recipe-card.component';
 import { CommonModule } from '@angular/common';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 import { RecipeIngredientsAddComponent } from './recipe/recipe-ingredients-add/recipe-ingredients-add.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
@@ -32,7 +33,8 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     RecipeCardComponent,
     RecipeAddComponent,
     RecipeIngredientsAddComponent,
-    TextInputComponent
+    TextInputComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     HttpClientModule, BrowserAnimationsModule, 
     FormsModule, 
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    PaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

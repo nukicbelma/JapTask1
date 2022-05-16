@@ -1,4 +1,5 @@
-﻿using API.DTOs;
+﻿using API.Database;
+using API.DTOs;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,11 +32,19 @@ namespace API.Controllers
             return _repo.GetAll();
         }
 
-        //[HttpPost("add")]
-        //public async Task<ActionResult<Recipe>> AddRecipe(RecipeDto request)
-        //{
-        //    var recipe = await _repo.AddRecipe(request);
-        //    return Ok(recipe);
-        //}
+        [HttpGet]
+        [Route("getIngredientsByRecipe/{id}")]
+        public async Task<IActionResult> GetIngredientsByRecipe(int id)
+        {
+            var ingredients = await _repo.GetIngredientsByRecipe(id);
+            return Ok(ingredients);
+        }
+
+        [HttpPost("add/{id}")]
+        public async Task<ActionResult<RecipeDetail>> AddRecipe(int id,RecipeDetailInsertDto request)
+        {
+            var recipe = await _repo.AddIngredientToRecipe(id,request);
+            return Ok(recipe);
+        }
     }
 }

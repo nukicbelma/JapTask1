@@ -1,5 +1,7 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -32,6 +34,16 @@ namespace API.Controllers
         public async Task<ActionResult<CategoryDto>> GetCategoryById(int id)
         {
             return await _repo.GetCategoryById(id);
+        }
+
+        [HttpGet("getCategoriesPaging")]
+
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesPaging([FromQuery] PaginationParams p)
+        {
+            var categories = await _repo.GetCategoriesPaging(p);
+            Response.AddPaginationHeader(categories.CurrentPage, categories.PageSize, categories.TotalCount, categories.TotalPages);
+            return Ok(categories);
+
         }
     }
 }

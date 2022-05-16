@@ -1,0 +1,18 @@
+table {
+    background-color: lightgrey;
+    padding: 5px;
+    width:100%;
+}
+th {
+    width:15%; padding: 5px;
+}
+.table {
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 10px;
+}
+.title {
+    background-color: lightgray;
+    width: 100%;
+    padding: 10px;
+}
