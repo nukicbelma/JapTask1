@@ -37,7 +37,6 @@ namespace API.Controllers
         }
 
         [HttpGet("getCategoriesPaging")]
-
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesPaging([FromQuery] PaginationParams p)
         {
             var categories = await _repo.GetCategoriesPaging(p);

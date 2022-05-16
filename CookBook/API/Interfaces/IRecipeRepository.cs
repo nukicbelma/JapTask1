@@ -1,5 +1,6 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace API.Interfaces
         Task<RecipeDto> GetRecipesById(int recipeId);
 
         Task<ActionResult<Recipe>> AddRecipe(RecipeDto request);
+        Task<PagedList<RecipeDto>> GetRecipesPaging(int categoryId,PaginationParams p);
     }
 }

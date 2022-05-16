@@ -17,7 +17,6 @@ namespace API.Controllers
     public class AppUserController : ControllerBase
     {
         private readonly IAppUserRepository _repo;
-        private readonly japtask1Context _context;
 
         public AppUserController(IAppUserRepository repo)
         {

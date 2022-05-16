@@ -1,5 +1,7 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +47,15 @@ namespace API.Controllers
         {
             var recipe = await _repo.AddRecipe(request);
             return Ok(recipe);
+        }
+
+        [HttpGet("getRecipesPaging/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<RecipeDto>>> GetRecipesPaging(int categoryId,[FromQuery] PaginationParams p)
+        {
+            var categories = await _repo.GetRecipesPaging(categoryId,p);
+            Response.AddPaginationHeader(categories.CurrentPage, categories.PageSize, categories.TotalCount, categories.TotalPages);
+            return Ok(categories);
+
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -50,6 +52,12 @@ namespace API.Repositories
             _repo.Recipes.Add(newRecipe);
             await _repo.SaveChangesAsync();
             return _mapper.Map<Recipe>(newRecipe);
+        }
+        public async Task<PagedList<RecipeDto>> GetRecipesPaging(int categoryId,PaginationParams p)
+        {
+            var query = _repo.Recipes.Include(x => x.Category).Where(u => u.CategoryId == categoryId).ProjectTo<RecipeDto>(_mapper.ConfigurationProvider)
+                .AsQueryable().AsNoTracking();
+            return await PagedList<RecipeDto>.CreateAsync(query, p.PageNumber, p.PageSize);
         }
     }
 }
