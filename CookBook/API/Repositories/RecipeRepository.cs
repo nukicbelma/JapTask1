@@ -26,13 +26,13 @@ namespace API.Repositories
         public List<RecipeDto> GetAll()
         {
             var query = _repo.Recipes.AsQueryable();
-            var list = query.ToList();
+            var list = query.OrderBy(x => x.TotalPrice).ToList();
             return _mapper.Map<List<RecipeDto>>(list);
         }
 
         public async Task<IEnumerable<RecipeDto>> GetRecipesByCategory(int categoryId)
         {
-            var listaRecepata = await _repo.Recipes.Include(x => x.Category).Where(u => u.CategoryId == categoryId).ToListAsync();
+            var listaRecepata = await _repo.Recipes.Include(x => x.Category).Where(u => u.CategoryId == categoryId).OrderBy(x=>x.TotalPrice).ToListAsync();
             return _mapper.Map<List<RecipeDto>>(listaRecepata);
         }
         public async Task<RecipeDto> GetRecipesById(int recipeId)
@@ -57,6 +57,8 @@ namespace API.Repositories
         {
             var query = _repo.Recipes.Include(x => x.Category).Where(u => u.CategoryId == categoryId).ProjectTo<RecipeDto>(_mapper.ConfigurationProvider)
                 .AsQueryable().AsNoTracking();
+
+            query = query.OrderBy(x => x.TotalPrice);
             return await PagedList<RecipeDto>.CreateAsync(query, p.PageNumber, p.PageSize);
         }
     }
