@@ -7,5 +7,6 @@ namespace API.Helpers
 {
     public class GetTotalPrice
     {
+
     }
 }
