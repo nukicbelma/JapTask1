@@ -8,7 +8,7 @@ namespace API.Helpers
     public class GetTotalPrice
     {
 
-        public static float CalculateRecipeDetailCost(float kolicina, string unit, float sastojciKolicina, float cijena, string sastojciUnit)
+        public static float getTotal(float kolicina, string unit, float sastojciKolicina, float cijena, string sastojciUnit)
         {
 
             if (unit == sastojciUnit)
@@ -32,7 +32,7 @@ namespace API.Helpers
 
             if (unit == "ml")
             {
-                if (sastojciUnit == "L")
+                if (sastojciUnit == "l")
                 {
                     float x = sastojciKolicina * 1000;
                     float z = x / kolicina;
@@ -53,7 +53,7 @@ namespace API.Helpers
                 }
             }
 
-            if (unit == "L")
+            if (unit == "l")
             {
                 if (sastojciUnit == "ml")
                 {

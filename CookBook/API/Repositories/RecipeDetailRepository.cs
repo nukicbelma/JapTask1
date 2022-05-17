@@ -47,7 +47,8 @@ namespace API.Repositories
                     Amount = i.Amount,
                     IngredientId = i.IngredientId,
                     UnitMeasure = i.UnitMeasure,
-                    Price = (decimal)GetTotalPrice.CalculateRecipeDetailCost(i.Amount, i.UnitMeasure, i.Ingredient.Quantity, (int)i.Ingredient.Price, i.Ingredient.UnitMeasure),
+                    //Price = (decimal)GetTotalPrice.getTotal(i.Amount, i.UnitMeasure, i.Ingredient.Quantity, (int)i.Ingredient.Price, i.Ingredient.UnitMeasure),
+                    Price=i.Price,
                     Ingredient = i.Ingredient,
                     Recipe = i.Recipe
                 };
@@ -59,13 +60,16 @@ namespace API.Repositories
         public async Task<ActionResult<RecipeDetailDto>> AddIngredientToRecipe(int recipeId, RecipeDetailInsertDto request)
         {
             var find = _repo.Recipes.Find(recipeId);
+            var ingredient = _repo.Ingredients.Find(request.IngredientId);
             var novi = new RecipeDetail
             {
                 Amount = request.Amount,
                 IngredientId = request.IngredientId,
                 RecipeId = recipeId,
                 Recipe = find,
-                UnitMeasure = request.UnitMeasure
+                UnitMeasure = request.UnitMeasure,
+                Price = (decimal)GetTotalPrice.getTotal(request.Amount, request.UnitMeasure, ingredient.Quantity, (int)ingredient.Price, ingredient.UnitMeasure),
+
             };
             _repo.RecipeDetails.Add(novi);
             await _repo.SaveChangesAsync();
