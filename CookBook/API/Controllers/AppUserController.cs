@@ -11,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    //[Route("[api/controller]")]
-    //[Authorize]
     public class AppUserController : ControllerBase
     {
         private readonly IAppUserRepository _repo;
@@ -43,5 +42,10 @@ namespace API.Controllers
         //    return await _context.AppUsers.ToListAsync();
         //}
 
+        [HttpPost("Login/")]
+        public Task<AppUserDto> Login([FromQuery] LoginDto model)
+        {
+            return _repo.Login(model);
+        }
     }
 }

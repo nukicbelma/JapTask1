@@ -1,5 +1,6 @@
 ﻿using API.Database;
 using API.DTOs;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +47,7 @@ namespace API.Repositories
                     Amount = i.Amount,
                     IngredientId = i.IngredientId,
                     UnitMeasure = i.UnitMeasure,
-                    Price = i.Price,
+                    Price = (decimal)GetTotalPrice.CalculateRecipeDetailCost(i.Amount, i.UnitMeasure, i.Ingredient.Quantity, (int)i.Ingredient.Price, i.Ingredient.UnitMeasure),
                     Ingredient = i.Ingredient,
                     Recipe = i.Recipe
                 };

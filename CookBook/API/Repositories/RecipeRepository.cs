@@ -25,9 +25,17 @@ namespace API.Repositories
         }
         public List<RecipeDto> GetAll()
         {
-            var query = _repo.Recipes.AsQueryable();
-            var list = query.OrderBy(x => x.TotalPrice).ToList();
+            var query = _repo.Recipes.AsQueryable().ToList();
+            var list = _mapper.Map<List<RecipeDto>>(query);
+
+            //var newList = new List<RecipeDto>();
+            //foreach (var item in list)
+            //{
+            //    item.TotalPrice = _repo.RecipeDetails.Where(x => x.RecipeId == item.RecipeId).Sum(x => x.Price);
+            //    newList.Add(item);
+            //}
             return _mapper.Map<List<RecipeDto>>(list);
+            //return newList;
         }
 
         public async Task<IEnumerable<RecipeDto>> GetRecipesByCategory(int categoryId)
@@ -37,7 +45,9 @@ namespace API.Repositories
         }
         public async Task<RecipeDto> GetRecipesById(int recipeId)
         {
-            var listaRecepata = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).FirstOrDefaultAsync();
+            var listaRecepata = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).
+               
+                FirstOrDefaultAsync();
             return _mapper.Map<RecipeDto>(listaRecepata);
         }
         public async Task<ActionResult<Recipe>> AddRecipe(RecipeDto request)

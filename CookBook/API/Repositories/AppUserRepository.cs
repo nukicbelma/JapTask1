@@ -52,16 +52,16 @@ namespace API.Repositories
             }
             return null;
         }
-        public async Task<AppUserDto> Login(string username, string password)
+        public async Task<AppUserDto> Login(LoginDto model)
         {
-            var entity = await _context.AppUsers.FirstOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.AppUsers.FirstOrDefaultAsync(x => x.Username == model.username);
 
             if (entity == null)
             {
                 throw new UserException("Pogresan username ili password");
             }
 
-            var hash = StringGenerators.GenerateHash(entity.PasswordSalt, password);
+            var hash = StringGenerators.GenerateHash(entity.PasswordSalt, model.password);
 
             if (hash != entity.PasswordHash)
             {
