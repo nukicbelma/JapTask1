@@ -37,24 +37,17 @@ namespace API.Repositories
         public async Task<IEnumerable<RecipeDetailDto>> GetIngredientsByRecipe(int recipeId)
         {
             var ingredientListByRecipe =await _repo.RecipeDetails.Include(x => x.Ingredient).Where(x => x.RecipeId == recipeId).ToListAsync();
-            var newlistDto = new List<RecipeDetailDto>();
-            foreach (var i in  ingredientListByRecipe)
+            return _mapper.Map<List<RecipeDetailDto>>(ingredientListByRecipe);
+        }
+        public float totalRecipe(int recipeId)
+        {
+            var lista = _repo.RecipeDetails.Where(x => x.RecipeId == recipeId).ToList();
+            float suma = 0;
+            foreach (var item in lista)
             {
-                var dto = new RecipeDetailDto
-                {
-                    RecipeId = i.RecipeId,
-                    RecipteDetailId = i.RecipteDetailId,
-                    Amount = i.Amount,
-                    IngredientId = i.IngredientId,
-                    UnitMeasure = i.UnitMeasure,
-                    //Price = (decimal)GetTotalPrice.getTotal(i.Amount, i.UnitMeasure, i.Ingredient.Quantity, (int)i.Ingredient.Price, i.Ingredient.UnitMeasure),
-                    Price=i.Price,
-                    Ingredient = i.Ingredient,
-                    Recipe = i.Recipe
-                };
-                newlistDto.Add(dto);
+                suma += (float)item.Price;
             }
-            return newlistDto;
+            return suma;
         }
 
         public async Task<ActionResult<RecipeDetailDto>> AddIngredientToRecipe(int recipeId, RecipeDetailInsertDto request)
@@ -72,6 +65,11 @@ namespace API.Repositories
             };
 
             _repo.RecipeDetails.Add(novi);
+            var update = _repo.Recipes.Find(recipeId);
+           
+
+            await _repo.SaveChangesAsync();
+            update.TotalPrice = (decimal)totalRecipe(recipeId);
             await _repo.SaveChangesAsync();
             return _mapper.Map<RecipeDetailDto>(novi);
         }

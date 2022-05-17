@@ -27,24 +27,7 @@ namespace API.Repositories
         {
             var query = _repo.Recipes.AsQueryable().ToList();
             var list = _mapper.Map<List<RecipeDto>>(query);
-
-            var newList = new List<RecipeDto>();
-            foreach (var item in list)
-            {
-                var proba = new RecipeDto
-                {
-                    CategoryId = item.CategoryId,
-                    Category = item.Category,
-                    Description = item.Description,
-                    RecipeDetails = item.RecipeDetails,
-                    RecipeId = item.RecipeId,
-                    RecipeName = item.RecipeName,
-                    TotalPrice = (decimal)totalRecipe(item.RecipeId)
-                };
-                newList.Add(proba);
-            }
-            //return _mapper.Map<List<RecipeDto>>(list);
-            return newList;
+            return _mapper.Map<List<RecipeDto>>(list);
         }
         public  float totalRecipe(int recipeId)
         {
