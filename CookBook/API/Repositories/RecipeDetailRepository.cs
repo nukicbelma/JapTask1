@@ -69,8 +69,8 @@ namespace API.Repositories
                 Recipe = find,
                 UnitMeasure = request.UnitMeasure,
                 Price = (decimal)GetTotalPrice.getTotal(request.Amount, request.UnitMeasure, ingredient.Quantity, (int)ingredient.Price, ingredient.UnitMeasure),
-
             };
+
             _repo.RecipeDetails.Add(novi);
             await _repo.SaveChangesAsync();
             return _mapper.Map<RecipeDetailDto>(novi);

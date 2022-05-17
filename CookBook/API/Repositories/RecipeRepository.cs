@@ -28,14 +28,33 @@ namespace API.Repositories
             var query = _repo.Recipes.AsQueryable().ToList();
             var list = _mapper.Map<List<RecipeDto>>(query);
 
-            //var newList = new List<RecipeDto>();
-            //foreach (var item in list)
-            //{
-            //    item.TotalPrice = _repo.RecipeDetails.Where(x => x.RecipeId == item.RecipeId).Sum(x => x.Price);
-            //    newList.Add(item);
-            //}
-            return _mapper.Map<List<RecipeDto>>(list);
-            //return newList;
+            var newList = new List<RecipeDto>();
+            foreach (var item in list)
+            {
+                var proba = new RecipeDto
+                {
+                    CategoryId = item.CategoryId,
+                    Category = item.Category,
+                    Description = item.Description,
+                    RecipeDetails = item.RecipeDetails,
+                    RecipeId = item.RecipeId,
+                    RecipeName = item.RecipeName,
+                    TotalPrice = (decimal)totalRecipe(item.RecipeId)
+                };
+                newList.Add(proba);
+            }
+            //return _mapper.Map<List<RecipeDto>>(list);
+            return newList;
+        }
+        public  float totalRecipe(int recipeId)
+        {
+            var lista = _repo.RecipeDetails.Where(x => x.RecipeId == recipeId).ToList();
+            float suma = 0;
+            foreach (var item in lista)
+            {
+                suma += (float)item.Price;
+            }
+            return suma;
         }
 
         public async Task<IEnumerable<RecipeDto>> GetRecipesByCategory(int categoryId)
@@ -45,10 +64,10 @@ namespace API.Repositories
         }
         public async Task<RecipeDto> GetRecipesById(int recipeId)
         {
-            var listaRecepata = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).
-               
-                FirstOrDefaultAsync();
-            return _mapper.Map<RecipeDto>(listaRecepata);
+            var recept = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).FirstOrDefaultAsync();
+            recept.TotalPrice = (decimal)totalRecipe(recept.RecipeId);
+
+            return _mapper.Map<RecipeDto>(recept);
         }
         public async Task<ActionResult<Recipe>> AddRecipe(RecipeDto request)
         {
