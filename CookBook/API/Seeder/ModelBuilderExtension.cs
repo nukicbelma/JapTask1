@@ -22,21 +22,21 @@ namespace API.Seeder
 
             #region Dodavanje korisnika 
             //AppUsers
-            modelBuilder.Entity<AppUser>().HasData(
-            new AppUser()
+            modelBuilder.Entity<User>().HasData(
+            new User()
             {
-                AppUserId = 1,
-                FirstName = "Belma",
-                LastName = "Nukic",
+                Id = 1,
+                Firstname = "Belma",
+                Lastname = "Nukic",
                 Username = "belma",
                 PasswordSalt = Salt[0],
                 PasswordHash = StringGenerators.GenerateHash(Salt[0], "belma"),
             },
-            new AppUser()
+            new User()
             {
-                AppUserId = 2,
-                FirstName = "Ema",
-                LastName = "Bojcic",
+                Id = 2,
+                Firstname = "Ema",
+                Lastname = "Bojcic",
                 Username = "ema",
                 PasswordSalt = Salt[0],
                 PasswordHash = StringGenerators.GenerateHash(Salt[0], "ema"),
@@ -47,63 +47,63 @@ namespace API.Seeder
             modelBuilder.Entity<Category>().HasData(
                 new Category()
                 {
-                    CategoryId = 1,
-                    CategoryName = "Pancakes"
+                    Id = 1,
+                    Name = "Pancakes"
                 },
                 new Category()
                 {
-                    CategoryId = 2,
-                    CategoryName = "Waffles"
+                    Id = 2,
+                    Name = "Waffles"
                 },
                 new Category()
                 {
-                    CategoryId = 3,
-                    CategoryName = "Pizzas"
+                    Id = 3,
+                    Name = "Pizzas"
                 },
                 new Category()
                 {
-                    CategoryId = 4,
-                    CategoryName = "Burgers"
+                    Id = 4,
+                    Name = "Burgers"
                 },
                 new Category()
                 {
-                    CategoryId = 5,
-                    CategoryName = "Gluten-free"
+                    Id = 5,
+                    Name = "Gluten-free"
                 },
                 new Category()
                 {
-                    CategoryId = 6,
-                    CategoryName = "Pasta"
+                    Id = 6,
+                    Name = "Pasta"
                 },
                 new Category()
                 {
-                    CategoryId = 7,
-                    CategoryName = "Seafood"
+                    Id = 7,
+                    Name = "Seafood"
                 },
                 new Category()
                 {
-                    CategoryId = 8,
-                    CategoryName = "Salads"
+                    Id = 8,
+                    Name = "Salads"
                 },
                 new Category()
                 {
-                    CategoryId = 9,
-                    CategoryName = "Soups"
+                    Id = 9,
+                    Name = "Soups"
                 },
                 new Category()
                 {
-                    CategoryId = 10,
-                    CategoryName = "Breakfast"
+                    Id = 10,
+                    Name = "Breakfast"
                 },
                 new Category()
                 {
-                    CategoryId = 11,
-                    CategoryName = "testpaging1"
+                    Id = 11,
+                    Name = "testpaging1"
                 },
                  new Category()
                  {
-                     CategoryId = 12,
-                     CategoryName = "testpaging2"
+                     Id = 12,
+                     Name = "testpaging2"
                  }
                 );
             #endregion
@@ -112,83 +112,83 @@ namespace API.Seeder
             modelBuilder.Entity<Ingredient>().HasData(
                new Ingredient()
                {
-                   IngredientId = 1,
+                   Id = 1,
                    Name = "Flour",
-                   Price = 30,
-                   Quantity = 20,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 30,
+                   PurchaseAmount = 20,
+                   PurchaseMeasure = "kg"
                },
                new Ingredient()
                {
-                   IngredientId = 2,
+                   Id = 2,
                    Name = "Eggs",
-                   Price = 10,
-                   Quantity = 20,
-                   UnitMeasure = "kom"
+                   PurchasePrice = 10,
+                   PurchaseAmount = 20,
+                   PurchaseMeasure = "kom"
                },
                new Ingredient()
                {
-                   IngredientId = 3,
+                   Id = 3,
                    Name = "Milk",
-                   Price = 10,
-                   Quantity = 8,
-                   UnitMeasure = "l"
+                   PurchasePrice = 10,
+                   PurchaseAmount = 8,
+                   PurchaseMeasure = "l"
                },
                new Ingredient()
                {
-                   IngredientId = 4,
+                   Id = 4,
                    Name = "Chicken",
-                   Price = 50,
-                   Quantity = 5,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 50,
+                   PurchaseAmount = 5,
+                   PurchaseMeasure = "kg"
                },
                new Ingredient()
                {
-                   IngredientId = 5,
+                   Id = 5,
                    Name = "Beef",
-                   Price = 45,
-                   Quantity = 3,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 45,
+                   PurchaseAmount = 3,
+                   PurchaseMeasure = "kg"
                },
                new Ingredient()
                {
-                   IngredientId = 6,
+                   Id = 6,
                    Name = "Salt",
-                   Price = 5,
-                   Quantity = 5,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 5,
+                   PurchaseAmount = 5,
+                   PurchaseMeasure = "kg"
                },
                new Ingredient()
                {
-                   IngredientId = 7,
+                   Id = 7,
                    Name = "Vegeta",
-                   Price = 5,
-                   Quantity = 500,
-                   UnitMeasure = "g"
+                   PurchasePrice = 5,
+                   PurchaseAmount = 500,
+                   PurchaseMeasure = "g"
                },
                new Ingredient()
                {
-                   IngredientId = 8,
+                   Id = 8,
                    Name = "Cheese",
-                   Price = 20,
-                   Quantity = 2,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 20,
+                   PurchaseAmount = 2,
+                   PurchaseMeasure = "kg"
                },
                new Ingredient()
                {
-                   IngredientId = 9,
+                   Id = 9,
                    Name = "GreekYogurt",
-                   Price = 2,
-                   Quantity = 2,
-                   UnitMeasure = "l"
+                   PurchasePrice = 2,
+                   PurchaseAmount = 2,
+                   PurchaseMeasure = "l"
                },
                new Ingredient()
                {
-                   IngredientId = 10,
+                   Id = 10,
                    Name = "Butter",
-                   Price = 20,
-                   Quantity = 5,
-                   UnitMeasure = "kg"
+                   PurchasePrice = 20,
+                   PurchaseAmount = 5,
+                   PurchaseMeasure = "kg"
                }
                );
             #endregion
@@ -198,33 +198,33 @@ namespace API.Seeder
             modelBuilder.Entity<Recipe>().HasData(
               new Recipe()
               {
-                  RecipeId = 1,
+                  Id = 1,
                   CategoryId = 3,
-                  RecipeName = "Vegetarina",
+                  Name = "Vegetarina",
                   Description = "This is a demo.",
                   TotalPrice = 15
               },
                new Recipe()
                {
-                   RecipeId = 2,
+                   Id = 2,
                    CategoryId = 3,
-                   RecipeName = "Fungi",
+                   Name = "Fungi",
                    Description = "This is a demo part2. ",
                    TotalPrice = 19
                },
                 new Recipe()
                 {
-                    RecipeId = 3,
+                    Id = 3,
                     CategoryId = 1,
-                    RecipeName = "Ferero",
+                    Name = "Ferero",
                     Description = "This is a demo3",
                     TotalPrice = 10
                 },
                  new Recipe()
                  {
-                     RecipeId = 4,
+                     Id = 4,
                      CategoryId = 1,
-                     RecipeName = "Protein pancake",
+                     Name = "Protein pancake",
                      Description = "This is a demo4",
                      TotalPrice = 14
                  }
@@ -236,109 +236,109 @@ namespace API.Seeder
             modelBuilder.Entity<RecipeDetail>().HasData(
               new RecipeDetail()
               {
-                  RecipteDetailId = 1,
+                  Id = 1,
                   RecipeId = 1,
                   IngredientId = 1,
-                  UnitMeasure = "g",
+                  Measure = "g",
                   Amount = 3,
                   Price = 5
               },
                new RecipeDetail()
                {
-                   RecipteDetailId = 2,
+                   Id = 2,
                    RecipeId = 1,
                    IngredientId = 2,
-                   UnitMeasure = "l",
+                   Measure = "l",
                    Amount = 2,
                    Price = 2
                },
                 new RecipeDetail()
                 {
-                    RecipteDetailId = 3,
+                    Id = 3,
                     RecipeId = 1,
                     IngredientId = 3,
-                    UnitMeasure = "ml",
+                    Measure = "ml",
                     Amount = 2,
                     Price = 3
                 },
                  new RecipeDetail()
                  {
-                     RecipteDetailId = 4,
+                     Id = 4,
                      RecipeId = 2,
                      IngredientId = 1,
-                     UnitMeasure = "g",
+                     Measure = "g",
                      Amount = 3,
                      Price = 3
                  },
                   new RecipeDetail()
                   {
-                      RecipteDetailId = 5,
+                      Id = 5,
                       RecipeId = 2,
                       IngredientId = 1,
-                      UnitMeasure = "g",
+                      Measure = "g",
                       Amount = 3,
                       Price = 3
                   },
                    new RecipeDetail()
                    {
-                       RecipteDetailId = 6,
+                       Id = 6,
                        RecipeId = 2,
                        IngredientId = 5,
-                       UnitMeasure = "ml",
+                       Measure = "ml",
                        Amount = 4,
                        Price = 7
                    },
                     new RecipeDetail()
                     {
-                        RecipteDetailId = 7,
+                        Id = 7,
                         RecipeId = 3,
                         IngredientId = 1,
-                        UnitMeasure = "ml",
+                        Measure = "ml",
                         Amount = 4,
                         Price = 2
                     },
                      new RecipeDetail()
                      {
-                         RecipteDetailId = 8,
+                         Id = 8,
                          RecipeId = 3,
                          IngredientId = 1,
-                         UnitMeasure = "ml",
+                         Measure = "ml",
                          Amount = 4,
                          Price = 4
                      },
                       new RecipeDetail()
                       {
-                          RecipteDetailId = 9,
+                          Id = 9,
                           RecipeId = 3,
                           IngredientId = 4,
-                          UnitMeasure = "l",
+                          Measure = "l",
                           Amount = 2,
                           Price = 2
                       },
                        new RecipeDetail()
                        {
-                           RecipteDetailId = 10,
+                           Id = 10,
                            RecipeId = 4,
                            IngredientId = 1,
-                           UnitMeasure = "ml",
+                           Measure = "ml",
                            Amount = 3,
                            Price = 3
                        },
                         new RecipeDetail()
                         {
-                            RecipteDetailId = 11,
+                            Id = 11,
                             RecipeId = 4,
                             IngredientId = 3,
-                            UnitMeasure = "ml",
+                            Measure = "ml",
                             Amount = 3,
                             Price = 2
                         },
                          new RecipeDetail()
                          {
-                             RecipteDetailId = 12,
+                             Id = 12,
                              RecipeId = 4,
                              IngredientId = 4,
-                             UnitMeasure = "ml",
+                             Measure = "ml",
                              Amount = 7,
                              Price = 4
                          }

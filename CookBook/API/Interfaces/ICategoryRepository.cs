@@ -10,7 +10,7 @@ namespace API.Interfaces
 {
     public interface ICategoryRepository
     {
-        List<CategoryDto> Get();
+        Task<ActionResult<IEnumerable<CategoryDto>>> Get();
         Task<ActionResult<CategoryDto>> GetCategoryById(int categoryId);
         Task<PagedList<CategoryDto>> GetCategoriesPaging(PaginationParams p);
     }

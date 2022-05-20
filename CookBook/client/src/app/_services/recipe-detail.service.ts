@@ -13,6 +13,6 @@ export class RecipeDetailService {
 
   addIngredients(recipeId:number, request: recipeDetailInsertDto)
   {
-    return this.http.post(this.baseUrl+'recipeDetail/add/'+recipeId+'/', request);
+    return this.http.post(this.baseUrl+'recipeDetails/add/'+recipeId+'/', request);
   }  
 }

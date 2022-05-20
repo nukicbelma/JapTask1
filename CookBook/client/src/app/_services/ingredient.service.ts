@@ -12,12 +12,12 @@ baseUrl=environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getIngredients() {
-    return this.http.get<Ingredient[]>(this.baseUrl+'ingredient');
+    return this.http.get<Ingredient[]>(this.baseUrl+'ingredients');
   }
   loadIngredientById(id) {
-    return this.http.get<Ingredient>(this.baseUrl +'ingredient/getIngredientById/'+ id);
+    return this.http.get<Ingredient>(this.baseUrl +'ingredients/getIngredientById/'+ id);
   }
   loadUnits() {
-    return this.http.get<string[]>(this.baseUrl +'ingredient/getUnits');
+    return this.http.get<string[]>(this.baseUrl +'ingredients/getUnits');
   }
 }

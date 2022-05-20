@@ -18,18 +18,18 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
 
   getRecipesByCategory(categoryId) {
-    return this.http.get<Recipe[]>(this.baseUrl + 'recipe/getRecipesByCategory/' + categoryId);
+    return this.http.get<Recipe[]>(this.baseUrl + 'recipes/getRecipesByCategory/' + categoryId);
   }
   getRecipesById(recipeId) {
-    return this.http.get<Recipe[]>(this.baseUrl + 'recipe/getRecipesById/' + recipeId);
+    return this.http.get<Recipe[]>(this.baseUrl + 'recipes/getRecipesById/' + recipeId);
   }
   addRecipe(recipe:Recipe)
   {
-    return this.http.post(this.baseUrl+'recipe/add', recipe);
+    return this.http.post(this.baseUrl+'recipes/add', recipe);
   }
   getIngredientsByRecipe(recipeId)
   {
-    return this.http.get<RecipeDetail[]>(this.baseUrl+'recipeDetail/getIngredientsByRecipe/'+recipeId);
+    return this.http.get<RecipeDetail[]>(this.baseUrl+'recipeDetails/getIngredientsByRecipe/'+recipeId);
   }
   getRecipesPaging(categoryId, page?:number, itemsPerPage?:number)
   {
@@ -41,7 +41,7 @@ export class RecipeService {
 
     }
     return this.http.get<Recipe[]>
-          (this.baseUrl+'recipe/getRecipesPaging/'+categoryId+'/', {observe:'response',params}).pipe(
+          (this.baseUrl+'recipes/getRecipesPaging/'+categoryId+'/', {observe:'response',params}).pipe(
             map(response=>{
               this.paginatedResult.result=response.body;
               if(response.headers.get('Pagination')!==null){

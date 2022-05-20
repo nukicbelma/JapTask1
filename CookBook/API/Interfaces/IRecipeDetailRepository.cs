@@ -12,7 +12,7 @@ namespace API.Interfaces
     {
         Task<IEnumerable<RecipeDetailDto>> GetIngredientsByRecipe(int recipeId);
         Task<IEnumerable<RecipeDetailDto>> GetRecipeDetailById(int categoryId);
-        List<RecipeDetailDto> GetAll();
+        Task<ActionResult<IEnumerable<RecipeDetailDto>>> GetAll();
         Task<ActionResult<RecipeDetailDto>> AddIngredientToRecipe(int id,RecipeDetailInsertDto request);
 
     }

@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 #nullable disable
 
 namespace API.Database
 {
-    public partial class Ingredient
+    public partial class Ingredient :BaseEntity
     {
         public Ingredient()
         {
-            RecipeDetails = new HashSet<RecipeDetail>();
+            RecipeIngredients = new HashSet<RecipeDetail>();
         }
 
-        public int IngredientId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
-        public string UnitMeasure { get; set; }
+        public decimal PurchasePrice { get; set; }
+        public int PurchaseAmount { get; set; }
+        public string PurchaseMeasure { get; set; }
 
-        public virtual ICollection<RecipeDetail> RecipeDetails { get; set; }
+        public virtual ICollection<RecipeDetail> RecipeIngredients { get; set; }
     }
 }

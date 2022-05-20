@@ -9,7 +9,7 @@ namespace API.Interfaces
 {
     public interface IIngredientRepository
     {
-        List<IngredientDto> GetAll();
+        Task<ActionResult<IEnumerable<IngredientDto>>> GetAll();
         Task<IngredientDto> getIngredientById(int ingredientId);
         List<string> GetUnits();
     }

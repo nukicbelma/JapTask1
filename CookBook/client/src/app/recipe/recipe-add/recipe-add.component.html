@@ -3,7 +3,7 @@
     <div class="col">
         <div class="card" style="padding: 20px;">
            <form [formGroup]="recipeAddForm" (ngSubmit)="recipeAddForm.valid && testSubmit()" autocomplete="off">
-                <app-text-input  [formControl]='recipeAddForm.controls["recipeName"]' [label]='"Recipe name"'></app-text-input>
+                <app-text-input  [formControl]='recipeAddForm.controls["name"]' [label]='"Recipe name"'></app-text-input>
                 <div>
                     <strong>Category:</strong><br>
                     <select
@@ -11,7 +11,7 @@
                     name="Category"
                     (change)="ChangeCategory($event)"
                     formControlName="categoryId">
-                        <option [value]="cat.categoryId" *ngFor="let cat of categories"> {{cat.categoryName}}</option>
+                        <option [value]="cat.id" *ngFor="let cat of categories"> {{cat.name}}</option>
                     </select>
                     <br>
                 </div>

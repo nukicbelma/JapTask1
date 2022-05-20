@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace API.Repositories
             _repo = repo;
             _mapper = mapper;
         }
-        public List<IngredientDto> GetAll()
+        public async Task<ActionResult<IEnumerable<IngredientDto>>> GetAll()
         {
             var query = _repo.Ingredients.AsQueryable();
             var list = query.ToList();
@@ -28,7 +29,7 @@ namespace API.Repositories
         }
         public async Task<IngredientDto> getIngredientById(int id)
         {
-            var listaRecepata = await _repo.Ingredients.Where(u => u.IngredientId == id).FirstOrDefaultAsync();
+            var listaRecepata = await _repo.Ingredients.Where(u => u.Id == id).FirstOrDefaultAsync();
             return _mapper.Map<IngredientDto>(listaRecepata);
         }
         public List<string> GetUnits()

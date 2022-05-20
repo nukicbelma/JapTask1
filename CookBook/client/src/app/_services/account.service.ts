@@ -12,7 +12,6 @@ export class AccountService {
 baseUrl=environment.apiUrl;
 private currentUserSource=new ReplaySubject <AppUser> (1);
 currentUser$=this.currentUserSource.asObservable();
-
 constructor(private http:HttpClient) { }
 
 login(model:any)
@@ -24,15 +23,12 @@ login(model:any)
       if(user)
       {
         this.setCurrentUser(user);
-
-
       }
     })
   )*/
 }
-
-  setCurrentUser(appUser:AppUser)
-  {
+setCurrentUser(appUser:AppUser)
+{
     
-  }
+}
 }

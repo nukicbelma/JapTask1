@@ -22,7 +22,7 @@ namespace API.Repositories
             _repo = repo;
             _mapper = mapper;
         }
-        public List<RecipeDetailDto> GetAll()
+        public async Task<ActionResult<IEnumerable<RecipeDetailDto>>> GetAll()
         {
             var query = _repo.RecipeDetails.Include(x=>x.Ingredient).Include(x=>x.Recipe).AsQueryable();
             var list = query.ToList();
@@ -60,8 +60,8 @@ namespace API.Repositories
                 IngredientId = request.IngredientId,
                 RecipeId = recipeId,
                 Recipe = find,
-                UnitMeasure = request.UnitMeasure,
-                Price = (decimal)GetTotalPrice.getTotal(request.Amount, request.UnitMeasure, ingredient.Quantity, (int)ingredient.Price, ingredient.UnitMeasure),
+                Measure = request.Measure,
+                Price = (decimal)GetTotalPrice.getTotal(request.Amount, request.Measure, ingredient.PurchaseAmount, (int)ingredient.PurchasePrice, ingredient.PurchaseMeasure),
             };
 
             _repo.RecipeDetails.Add(novi);

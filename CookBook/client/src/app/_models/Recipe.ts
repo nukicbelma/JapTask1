@@ -2,9 +2,9 @@ import { Category } from './category';
 import { Ingredient } from './ingredient';
 
 export interface Recipe {
-    recipeId: number;
+    id: number;
     ingredients:Ingredient[];
-    recipeName: string;
+    name: string;
     description: string;
     categoryId: number;
     totalPrice: number;

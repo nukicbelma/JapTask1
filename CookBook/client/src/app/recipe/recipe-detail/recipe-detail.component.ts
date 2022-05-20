@@ -17,7 +17,7 @@ ingredients:RecipeDetail[];
 
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { 
-    this.recipeId=this.route.snapshot.paramMap.get('recipeId');
+    this.recipeId=this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {

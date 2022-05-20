@@ -18,7 +18,7 @@ namespace API.Database
         {
         }
 
-        public virtual DbSet<AppUser> AppUsers { get; set; }
+        public virtual DbSet<User> AppUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
@@ -37,15 +37,15 @@ namespace API.Database
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Bosnian_Latin_100_BIN");
 
-            modelBuilder.Entity<AppUser>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("AppUser");
 
-                entity.Property(e => e.FirstName)
+                entity.Property(e => e.Firstname)
                     .IsRequired()
                     .HasMaxLength(20);
 
-                entity.Property(e => e.LastName)
+                entity.Property(e => e.Lastname)
                     .IsRequired()
                     .HasMaxLength(20);
 
@@ -62,7 +62,7 @@ namespace API.Database
             {
                 entity.ToTable("Category");
 
-                entity.Property(e => e.CategoryName)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(20);
             });
@@ -75,9 +75,9 @@ namespace API.Database
                     .IsRequired()
                     .HasMaxLength(20);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.PurchasePrice).HasColumnType("decimal(18, 2)");
 
-                entity.Property(e => e.UnitMeasure).HasMaxLength(3);
+                entity.Property(e => e.PurchaseMeasure).HasMaxLength(3);
             });
 
             modelBuilder.Entity<Recipe>(entity =>
@@ -88,7 +88,7 @@ namespace API.Database
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.RecipeName)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(25);
 
@@ -97,23 +97,23 @@ namespace API.Database
 
             modelBuilder.Entity<RecipeDetail>(entity =>
             {
-                entity.HasKey(e => e.RecipteDetailId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK__RecipeDe__C8C9B68C715ACE4B");
 
                 entity.ToTable("RecipeDetail");
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
 
-                entity.Property(e => e.UnitMeasure).HasMaxLength(3);
+                entity.Property(e => e.Measure).HasMaxLength(3);
 
                 entity.HasOne(d => d.Ingredient)
-                    .WithMany(p => p.RecipeDetails)
+                    .WithMany(p => p.RecipeIngredients)
                     .HasForeignKey(d => d.IngredientId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_ingredient");
 
                 entity.HasOne(d => d.Recipe)
-                    .WithMany(p => p.RecipeDetails)
+                    .WithMany(p => p.RecipeIngredients)
                     .HasForeignKey(d => d.RecipeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_recipeId");

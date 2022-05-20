@@ -34,9 +34,4 @@ export class CategoryListComponent implements OnInit {
     this.pageNumber=event.page;
     this.loadCategories();
   }
-  //loadCategories() {
-    //this.categoryService.getCategories().subscribe(category=> {
-    //  this.categories=category;
-    //})
-  //}
 }

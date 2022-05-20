@@ -11,7 +11,7 @@
                         (change)="ChangeIgredient($event)"
                         formControlName="ingredientId"
                         >
-                            <option [value]="i.ingredientId" *ngFor="let i of ingredients"> {{i.name}}</option>
+                            <option [value]="i.id" *ngFor="let i of ingredients"> {{i.name}}</option>
                         </select>
                         <br><br>
                     </div>
@@ -22,10 +22,10 @@
                     <div>
                         <strong>Unit measure:</strong><br>
                         <select
-                        [class.is-invalid]='ingredientAddForm.get("unitMeasure").errors && ingredientAddForm.get("unitMeasure").touched'
-                        name="unitMeasure"
+                        [class.is-invalid]='ingredientAddForm.get("measure").errors && ingredientAddForm.get("measure").touched'
+                        name="measure"
                         (change)="ChangeUnits($event)"
-                        formControlName="unitMeasure"
+                        formControlName="measure"
                         >
                            <!--  <option *ngFor="let i of ingredients">
                                 {{i.ingredientName}}

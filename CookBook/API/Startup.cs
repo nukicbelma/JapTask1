@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API._Services;
 using API.Database;
 using API.Interfaces;
 using API.Repositories;
@@ -56,7 +57,8 @@ namespace API
             services.AddScoped<IRecipeDetailRepository, RecipeDetailRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IAppUserRepository, AppUserRepository>();
+            services.AddScoped<Interfaces.IUserRepository, UserRepository>();
+            services.AddScoped<ITokenService, TokenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

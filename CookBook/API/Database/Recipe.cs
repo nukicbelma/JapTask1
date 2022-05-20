@@ -5,19 +5,19 @@ using System.Collections.Generic;
 
 namespace API.Database
 {
-    public partial class Recipe
+    public partial class Recipe : BaseEntity
     {
         public Recipe()
         {
-            RecipeDetails = new HashSet<RecipeDetail>();
+            RecipeIngredients = new HashSet<RecipeDetail>();
         }
 
-        public int RecipeId { get; set; }
-        public string RecipeName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public decimal TotalPrice { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public virtual ICollection<RecipeDetail> RecipeDetails { get; set; }
+        public virtual ICollection<RecipeDetail> RecipeIngredients { get; set; }
     }
 }

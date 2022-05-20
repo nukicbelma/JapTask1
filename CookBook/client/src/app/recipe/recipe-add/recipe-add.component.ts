@@ -39,7 +39,7 @@ export class RecipeAddComponent implements OnInit {
   }
   initializeForm(){
     this.recipeAddForm=this.formBuilder.group({
-      recipeName: ['',Validators.required],
+      name: ['',Validators.required],
       description:['',Validators.required],
       categoryId:['',Validators.required ]
     })

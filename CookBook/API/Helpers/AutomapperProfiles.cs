@@ -24,7 +24,7 @@ namespace API.Helpers
             CreateMap<Ingredient, IngredientDto>().ReverseMap();
             CreateMap<RecipeDetail, RecipeDetailDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
-            CreateMap<AppUser, AppUserDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

@@ -2,9 +2,9 @@ import { Ingredient } from "./ingredient";
 import { Recipe } from "./recipe";
 
 export interface RecipeDetail {
-    reciepeDetailId: number;
+    id: number;
     amount: number;
-    unitMeasure:string;
+    measure:string;
     price:number;
     ingredient:Ingredient;
     recipe:Recipe;

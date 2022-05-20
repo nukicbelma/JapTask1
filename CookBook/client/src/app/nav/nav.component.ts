@@ -11,16 +11,12 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
   username:string;
   pass: string;
-  
   model: any = {}
 
-  constructor(public accountService: AccountService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
+constructor(public accountService: AccountService, private router: Router) { }
+ngOnInit(): void {}
 
 
 login() {

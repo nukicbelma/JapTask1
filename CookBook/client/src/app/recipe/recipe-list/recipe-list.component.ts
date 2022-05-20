@@ -22,7 +22,7 @@ pageSize=10;
 
 
   constructor(private categoryService: CategoryService, private route: ActivatedRoute, private recipeService: RecipeService) {
-    this.categoryId=this.route.snapshot.paramMap.get('categoryId');
+    this.categoryId=this.route.snapshot.paramMap.get('id');
    }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ pageSize=10;
   loadCategoryName() {
     this.categoryService.loadCategoryById(this.categoryId).subscribe(category => {
       this.category=category;
-      this.categoryName=this.category.categoryName;
+      this.categoryName=this.category.name;
     })
   }
   /*getRecipes() {

@@ -16,10 +16,10 @@ paginatedResult:PaginatedResult<Category[]>=new PaginatedResult<Category[]>();
   constructor(private http: HttpClient) { }
 
   getCategories() {
-    return this.http.get<Category[]>(this.baseUrl+'category');
+    return this.http.get<Category[]>(this.baseUrl+'categories');
   }
   loadCategoryById(categoryId) {
-    return this.http.get<Category>(this.baseUrl +'category/getCategoryById/'+ categoryId);
+    return this.http.get<Category>(this.baseUrl +'categories/getCategoryById/'+ categoryId);
   }
   getCategoriesPaging(page?:number, itemsPerPage?:number)
   {
@@ -31,7 +31,7 @@ paginatedResult:PaginatedResult<Category[]>=new PaginatedResult<Category[]>();
 
     }
     return this.http.get<Category[]>
-          (this.baseUrl+'category/getCategoriesPaging', {observe:'response',params}).pipe(
+          (this.baseUrl+'categories/getCategoriesPaging', {observe:'response',params}).pipe(
             map(response=>{
               this.paginatedResult.result=response.body;
               if(response.headers.get('Pagination')!==null){

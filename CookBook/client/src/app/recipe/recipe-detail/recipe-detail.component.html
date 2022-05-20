@@ -7,11 +7,11 @@
                 
                 <div class="title">
                     <strong>Recipe name:</strong>
-                    <p>{{recipes.recipeName}}</p>
+                    <p>{{recipes.name}}</p>
                 </div>
                 <div>
                     <strong>Category:</strong>
-                    <p>{{recipes.category.categoryName}}</p>
+                    <p>{{recipes.category.name}}</p>
                 </div>
                 <div>
                     <strong>Description:</strong>
@@ -33,7 +33,7 @@
                         <tr  *ngFor="let i of ingredients"> 
                         <td>{{i.ingredient.name}}</td>
                         <td>{{i.amount}}</td>
-                        <td>{{i.unitMeasure}}</td>
+                        <td>{{i.measure}}</td>
                         <td>{{i.price}} BAM </td>
                     </tr>
                 </table>
@@ -41,7 +41,7 @@
             </div>
             <div *ngIf="recipes" class="card-body">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary" routerLink='/addingredient/{{recipes.recipeId}}'>Edit recipe</button>
+                    <button class="btn btn-primary" routerLink='/addingredient/{{recipes.id}}'>Edit recipe</button>
                 </div>
             </div>
         </div>

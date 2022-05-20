@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace API.Database
 {
-    public partial class AppUser
+    public partial class User :BaseEntity
     {
-        public int AppUserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public int Id { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }

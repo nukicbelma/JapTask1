@@ -18,11 +18,11 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'recipe/:categoryId', component: RecipeListComponent},
-  {path:'recipes/:recipeId', component: RecipeDetailComponent},
+  {path:'recipe/:id', component: RecipeListComponent},
+  {path:'recipes/:id', component: RecipeDetailComponent},
   {path:'category', component: CategoryListComponent},
   {path:'addrecipe', component: RecipeAddComponent},
-  {path:'addingredient/:recipeId', component: RecipeIngredientsAddComponent},
+  {path:'addingredient/:id', component: RecipeIngredientsAddComponent},
   //{path:'messages', component: MessagesComponent}, 
   {path:'**', component: HomeComponent, pathMatch:'full'}
 ];

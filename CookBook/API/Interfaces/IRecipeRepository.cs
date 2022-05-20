@@ -12,7 +12,7 @@ namespace API.Interfaces
     public interface IRecipeRepository
     {
         Task<IEnumerable<RecipeDto>> GetRecipesByCategory(int categoryId);
-        List<RecipeDto> GetAll();
+        Task<ActionResult<IEnumerable<RecipeDto>>> GetAll();
         Task<RecipeDto> GetRecipesById(int recipeId);
 
         Task<ActionResult<Recipe>> AddRecipe(RecipeDto request);

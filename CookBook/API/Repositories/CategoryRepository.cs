@@ -23,7 +23,7 @@ namespace API.Repositories
             _context = context;
             _mapper = mapper;
         }
-        public List<CategoryDto> Get()
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> Get()
         {
             var query = _context.Categories.AsQueryable();
             var list = query.ToList();

@@ -23,7 +23,7 @@ namespace API.Repositories
             _repo = repo;
             _mapper = mapper;
         }
-        public List<RecipeDto> GetAll()
+        public async Task<ActionResult<IEnumerable<RecipeDto>>> GetAll()
         {
             var query = _repo.Recipes.AsQueryable().ToList();
             var list = _mapper.Map<List<RecipeDto>>(query);
@@ -47,8 +47,8 @@ namespace API.Repositories
         }
         public async Task<RecipeDto> GetRecipesById(int recipeId)
         {
-            var recept = await _repo.Recipes.Include(x=>x.Category).Where(u => u.RecipeId == recipeId).FirstOrDefaultAsync();
-            recept.TotalPrice = (decimal)totalRecipe(recept.RecipeId);
+            var recept = await _repo.Recipes.Include(x=>x.Category).Where(u => u.Id == recipeId).FirstOrDefaultAsync();
+            recept.TotalPrice = (decimal)totalRecipe(recept.Id);
 
             return _mapper.Map<RecipeDto>(recept);
         }
@@ -56,7 +56,7 @@ namespace API.Repositories
         {
             var newRecipe = new Recipe
             {
-                RecipeName=request.RecipeName, 
+                Name=request.Name, 
                 CategoryId=request.CategoryId,
                 Description=request.Description,
             };

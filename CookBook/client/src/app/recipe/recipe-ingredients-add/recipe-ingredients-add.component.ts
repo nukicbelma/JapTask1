@@ -25,7 +25,7 @@ selectedUnit:any;
               private fb:FormBuilder,
               private router:Router) { 
 
-                this.recipeId = this.route.snapshot.paramMap.get('recipeId');
+                this.recipeId = this.route.snapshot.paramMap.get('id');
               }
 
 
@@ -39,7 +39,7 @@ selectedUnit:any;
     this.ingredientAddForm=this.fb.group({
       ingredientId: ['',Validators.required],
       amount:['',Validators.required],
-      unitMeasure:['',Validators.required ]
+      measure:['',Validators.required ]
 
     })
   }
