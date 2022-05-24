@@ -33,7 +33,7 @@
                         <tr  *ngFor="let i of ingredients"> 
                         <td>{{i.ingredient.name}}</td>
                         <td>{{i.amount}}</td>
-                        <td>{{i.measure}}</td>
+                        <td *ngIf="ingredients">{{i.measure}}</td>
                         <td>{{i.price}} BAM </td>
                     </tr>
                 </table>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API.Helpers;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -11,7 +12,7 @@ namespace API.Database
   
         public int Amount { get; set; }
         public decimal Price { get; set; }
-        public string Measure { get; set; }
+        public EnumUnits Measure { get; set; }
         public int IngredientId { get; set; }
         public virtual Ingredient Ingredient { get; set; }
         public int RecipeId { get; set; }

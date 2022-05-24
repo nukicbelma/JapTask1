@@ -116,7 +116,7 @@ namespace API.Seeder
                    Name = "Flour",
                    PurchasePrice = 30,
                    PurchaseAmount = 20,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                },
                new Ingredient()
                {
@@ -124,7 +124,7 @@ namespace API.Seeder
                    Name = "Eggs",
                    PurchasePrice = 10,
                    PurchaseAmount = 20,
-                   PurchaseMeasure = "kom"
+                   PurchaseMeasure = EnumUnits.kom
                },
                new Ingredient()
                {
@@ -132,7 +132,7 @@ namespace API.Seeder
                    Name = "Milk",
                    PurchasePrice = 10,
                    PurchaseAmount = 8,
-                   PurchaseMeasure = "l"
+                   PurchaseMeasure = EnumUnits.l
                },
                new Ingredient()
                {
@@ -140,7 +140,7 @@ namespace API.Seeder
                    Name = "Chicken",
                    PurchasePrice = 50,
                    PurchaseAmount = 5,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                },
                new Ingredient()
                {
@@ -148,7 +148,7 @@ namespace API.Seeder
                    Name = "Beef",
                    PurchasePrice = 45,
                    PurchaseAmount = 3,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                },
                new Ingredient()
                {
@@ -156,7 +156,7 @@ namespace API.Seeder
                    Name = "Salt",
                    PurchasePrice = 5,
                    PurchaseAmount = 5,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                },
                new Ingredient()
                {
@@ -164,7 +164,7 @@ namespace API.Seeder
                    Name = "Vegeta",
                    PurchasePrice = 5,
                    PurchaseAmount = 500,
-                   PurchaseMeasure = "g"
+                   PurchaseMeasure = EnumUnits.g
                },
                new Ingredient()
                {
@@ -172,7 +172,7 @@ namespace API.Seeder
                    Name = "Cheese",
                    PurchasePrice = 20,
                    PurchaseAmount = 2,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                },
                new Ingredient()
                {
@@ -180,7 +180,7 @@ namespace API.Seeder
                    Name = "GreekYogurt",
                    PurchasePrice = 2,
                    PurchaseAmount = 2,
-                   PurchaseMeasure = "l"
+                   PurchaseMeasure = EnumUnits.l
                },
                new Ingredient()
                {
@@ -188,7 +188,7 @@ namespace API.Seeder
                    Name = "Butter",
                    PurchasePrice = 20,
                    PurchaseAmount = 5,
-                   PurchaseMeasure = "kg"
+                   PurchaseMeasure = EnumUnits.kg
                }
                );
             #endregion
@@ -239,7 +239,7 @@ namespace API.Seeder
                   Id = 1,
                   RecipeId = 1,
                   IngredientId = 1,
-                  Measure = "g",
+                  Measure = EnumUnits.g,
                   Amount = 3,
                   Price = 5
               },
@@ -248,7 +248,7 @@ namespace API.Seeder
                    Id = 2,
                    RecipeId = 1,
                    IngredientId = 2,
-                   Measure = "l",
+                   Measure = EnumUnits.g,
                    Amount = 2,
                    Price = 2
                },
@@ -257,7 +257,7 @@ namespace API.Seeder
                     Id = 3,
                     RecipeId = 1,
                     IngredientId = 3,
-                    Measure = "ml",
+                    Measure = EnumUnits.ml,
                     Amount = 2,
                     Price = 3
                 },
@@ -266,7 +266,7 @@ namespace API.Seeder
                      Id = 4,
                      RecipeId = 2,
                      IngredientId = 1,
-                     Measure = "g",
+                     Measure = EnumUnits.g,
                      Amount = 3,
                      Price = 3
                  },
@@ -275,7 +275,7 @@ namespace API.Seeder
                       Id = 5,
                       RecipeId = 2,
                       IngredientId = 1,
-                      Measure = "g",
+                      Measure = EnumUnits.g,
                       Amount = 3,
                       Price = 3
                   },
@@ -284,7 +284,7 @@ namespace API.Seeder
                        Id = 6,
                        RecipeId = 2,
                        IngredientId = 5,
-                       Measure = "ml",
+                       Measure = EnumUnits.ml,
                        Amount = 4,
                        Price = 7
                    },
@@ -293,7 +293,7 @@ namespace API.Seeder
                         Id = 7,
                         RecipeId = 3,
                         IngredientId = 1,
-                        Measure = "ml",
+                        Measure = EnumUnits.ml,
                         Amount = 4,
                         Price = 2
                     },
@@ -302,7 +302,7 @@ namespace API.Seeder
                          Id = 8,
                          RecipeId = 3,
                          IngredientId = 1,
-                         Measure = "ml",
+                         Measure = EnumUnits.ml,
                          Amount = 4,
                          Price = 4
                      },
@@ -311,7 +311,7 @@ namespace API.Seeder
                           Id = 9,
                           RecipeId = 3,
                           IngredientId = 4,
-                          Measure = "l",
+                          Measure = EnumUnits.l,
                           Amount = 2,
                           Price = 2
                       },
@@ -320,7 +320,7 @@ namespace API.Seeder
                            Id = 10,
                            RecipeId = 4,
                            IngredientId = 1,
-                           Measure = "ml",
+                           Measure = EnumUnits.ml,
                            Amount = 3,
                            Price = 3
                        },
@@ -329,7 +329,7 @@ namespace API.Seeder
                             Id = 11,
                             RecipeId = 4,
                             IngredientId = 3,
-                            Measure = "ml",
+                            Measure = EnumUnits.ml,
                             Amount = 3,
                             Price = 2
                         },
@@ -338,7 +338,7 @@ namespace API.Seeder
                              Id = 12,
                              RecipeId = 4,
                              IngredientId = 4,
-                             Measure = "ml",
+                             Measure = EnumUnits.ml,
                              Amount = 7,
                              Price = 4
                          }

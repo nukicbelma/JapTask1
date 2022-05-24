@@ -4,6 +4,7 @@ import { Category } from 'src/app/_models/Category';
 import { Recipe } from 'src/app/_models/Recipe';
 import { RecipeDetail } from 'src/app/_models/RecipeDetail';
 import { RecipeService } from 'src/app/_services/recipe.service';
+import { EnumUnits } from 'src/app/_models/EnumUnits';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,8 +17,10 @@ recipeId;
 ingredients:RecipeDetail[];
 
 
+
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { 
     this.recipeId=this.route.snapshot.paramMap.get('id');
+    
   }
 
   ngOnInit(): void {
@@ -35,5 +38,6 @@ ingredients:RecipeDetail[];
       this.recipes=recipes;
     })
   }
+
 
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using API.Helpers;
+using System.Collections.Generic;
 
 #nullable disable
 
@@ -15,7 +16,7 @@ namespace API.Database
         public string Name { get; set; }
         public decimal PurchasePrice { get; set; }
         public int PurchaseAmount { get; set; }
-        public string PurchaseMeasure { get; set; }
+        public EnumUnits PurchaseMeasure { get; set; }
 
         public virtual ICollection<RecipeDetail> RecipeIngredients { get; set; }
     }

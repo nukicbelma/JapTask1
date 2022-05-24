@@ -21,8 +21,8 @@ namespace API.Helpers
 
             CreateMap<Recipe, RecipeDto>().ReverseMap();
             CreateMap<RecipeDetail, RecipeDetailInsertDto>().ReverseMap();
-            CreateMap<Ingredient, IngredientDto>().ReverseMap();
-            CreateMap<RecipeDetail, RecipeDetailDto>().ReverseMap();
+            CreateMap<Ingredient, IngredientDto>().ForMember(dest=>dest.PurchaseMeasure, opt=>opt.MapFrom(src=>src.PurchaseMeasure.ToString()));
+            CreateMap<RecipeDetail, RecipeDetailDto>().ForMember(dest => dest.Measure, opt => opt.MapFrom(src => src.Measure.ToString()));
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
         }

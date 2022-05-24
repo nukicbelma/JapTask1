@@ -9,7 +9,7 @@ namespace API.Helpers
     public class GetTotalPrice
     {
 
-        public static float getTotal(float kolicina, string unit, float sastojciKolicina, float cijena, string sastojciUnit)
+        public static float getTotal(float kolicina, EnumUnits unit, float sastojciKolicina, float cijena, EnumUnits sastojciUnit)
         {
 
             if (unit == sastojciUnit)
@@ -19,9 +19,9 @@ namespace API.Helpers
                 return (float)Math.Round(y * 100f) / 100f;
             }
 
-            if (unit == "g")
+            if (unit == EnumUnits.g)
             {
-                if (sastojciUnit == "kg")
+                if (sastojciUnit == EnumUnits.kg)
                 {
                     float x = sastojciKolicina * 1000;
                     float z = x / kolicina;
@@ -31,9 +31,9 @@ namespace API.Helpers
                 }
             }
 
-            if (unit == "ml")
+            if (unit == EnumUnits.ml)
             {
-                if (sastojciUnit == "l")
+                if (sastojciUnit == EnumUnits.l)
                 {
                     float x = sastojciKolicina * 1000;
                     float z = x / kolicina;
@@ -42,9 +42,9 @@ namespace API.Helpers
                 }
             }
 
-            if (unit == "kg")
+            if (unit == EnumUnits.kg)
             {
-                if (sastojciUnit == "g")
+                if (sastojciUnit == EnumUnits.g)
                 {
                     float x = kolicina * 1000;
                     float z = x / sastojciKolicina;
@@ -54,9 +54,9 @@ namespace API.Helpers
                 }
             }
 
-            if (unit == "l")
+            if (unit == EnumUnits.l)
             {
-                if (sastojciUnit == "ml")
+                if (sastojciUnit == EnumUnits.ml)
                 {
                     float x = kolicina * 1000;
                     float z = x / sastojciKolicina;

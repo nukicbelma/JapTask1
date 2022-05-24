@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(japtask1Context))]
-    [Migration("20220520115104_m1")]
-    partial class m1
+    [Migration("20220524111016_m")]
+    partial class m
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,9 +134,9 @@ namespace API.Migrations
                     b.Property<int>("PurchaseAmount")
                         .HasColumnType("int");
 
-                    b.Property<string>("PurchaseMeasure")
+                    b.Property<int>("PurchaseMeasure")
                         .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("PurchasePrice")
                         .HasColumnType("decimal(18,2)");
@@ -152,7 +152,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Flour",
                             PurchaseAmount = 20,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 30m
                         },
                         new
@@ -161,7 +161,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Eggs",
                             PurchaseAmount = 20,
-                            PurchaseMeasure = "kom",
+                            PurchaseMeasure = 4,
                             PurchasePrice = 10m
                         },
                         new
@@ -170,7 +170,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Milk",
                             PurchaseAmount = 8,
-                            PurchaseMeasure = "l",
+                            PurchaseMeasure = 2,
                             PurchasePrice = 10m
                         },
                         new
@@ -179,7 +179,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Chicken",
                             PurchaseAmount = 5,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 50m
                         },
                         new
@@ -188,7 +188,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Beef",
                             PurchaseAmount = 3,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 45m
                         },
                         new
@@ -197,7 +197,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Salt",
                             PurchaseAmount = 5,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 5m
                         },
                         new
@@ -206,7 +206,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Vegeta",
                             PurchaseAmount = 500,
-                            PurchaseMeasure = "g",
+                            PurchaseMeasure = 1,
                             PurchasePrice = 5m
                         },
                         new
@@ -215,7 +215,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cheese",
                             PurchaseAmount = 2,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 20m
                         },
                         new
@@ -224,7 +224,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "GreekYogurt",
                             PurchaseAmount = 2,
-                            PurchaseMeasure = "l",
+                            PurchaseMeasure = 2,
                             PurchasePrice = 2m
                         },
                         new
@@ -233,7 +233,7 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Butter",
                             PurchaseAmount = 5,
-                            PurchaseMeasure = "kg",
+                            PurchaseMeasure = 0,
                             PurchasePrice = 20m
                         });
                 });
@@ -325,9 +325,9 @@ namespace API.Migrations
                     b.Property<int>("IngredientId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Measure")
+                    b.Property<int>("Measure")
                         .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -351,7 +351,7 @@ namespace API.Migrations
                             Amount = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "g",
+                            Measure = 1,
                             Price = 5m,
                             RecipeId = 1
                         },
@@ -361,7 +361,7 @@ namespace API.Migrations
                             Amount = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 2,
-                            Measure = "l",
+                            Measure = 1,
                             Price = 2m,
                             RecipeId = 1
                         },
@@ -371,7 +371,7 @@ namespace API.Migrations
                             Amount = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 3,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 3m,
                             RecipeId = 1
                         },
@@ -381,7 +381,7 @@ namespace API.Migrations
                             Amount = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "g",
+                            Measure = 1,
                             Price = 3m,
                             RecipeId = 2
                         },
@@ -391,7 +391,7 @@ namespace API.Migrations
                             Amount = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "g",
+                            Measure = 1,
                             Price = 3m,
                             RecipeId = 2
                         },
@@ -401,7 +401,7 @@ namespace API.Migrations
                             Amount = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 5,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 7m,
                             RecipeId = 2
                         },
@@ -411,7 +411,7 @@ namespace API.Migrations
                             Amount = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 2m,
                             RecipeId = 3
                         },
@@ -421,7 +421,7 @@ namespace API.Migrations
                             Amount = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 4m,
                             RecipeId = 3
                         },
@@ -431,7 +431,7 @@ namespace API.Migrations
                             Amount = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 4,
-                            Measure = "l",
+                            Measure = 2,
                             Price = 2m,
                             RecipeId = 3
                         },
@@ -441,7 +441,7 @@ namespace API.Migrations
                             Amount = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 1,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 3m,
                             RecipeId = 4
                         },
@@ -451,7 +451,7 @@ namespace API.Migrations
                             Amount = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 3,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 2m,
                             RecipeId = 4
                         },
@@ -461,7 +461,7 @@ namespace API.Migrations
                             Amount = 7,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientId = 4,
-                            Measure = "ml",
+                            Measure = 3,
                             Price = 4m,
                             RecipeId = 4
                         });
@@ -511,8 +511,8 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Firstname = "Belma",
                             Lastname = "Nukic",
-                            PasswordHash = "PVE8XPmZ1CvqhyjG8GVs9kUrU5c=",
-                            PasswordSalt = "UVIPk/cyNRwqpMSZcdTIog==",
+                            PasswordHash = "s8K7UqLHdZNOGeVtm07GcnMNXQA=",
+                            PasswordSalt = "zjaTuwlILf+HNOT4F9O1jA==",
                             Username = "belma"
                         },
                         new
@@ -521,8 +521,8 @@ namespace API.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Firstname = "Ema",
                             Lastname = "Bojcic",
-                            PasswordHash = "CG86F19olvcBlpgLaxKlsWeDsVY=",
-                            PasswordSalt = "UVIPk/cyNRwqpMSZcdTIog==",
+                            PasswordHash = "CjVSt74PW88D3KUChA1B4MfJ15Q=",
+                            PasswordSalt = "zjaTuwlILf+HNOT4F9O1jA==",
                             Username = "ema"
                         });
                 });
